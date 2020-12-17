@@ -2,11 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Asaftei_Nicoleta_Lab10.ListPage">
-    <ContentPage.Content>
+    <ContentPage.Content xmlns:local="clr-namespace: Asaftei_Nicoleta_Lab10">
         <StackLayout Margin="20">
             <Editor Placeholder="Enter the description of the shopping list"
  Text="{Binding Description}"
  HeightRequest="100" />
+
+            
+
+            <Button Text="Add/Choose Item to buy" Clicked="OnChooseButtonClicked"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -17,6 +21,14 @@
                 <Button Grid.Column="1"
  Text="Delete"
  Clicked="OnDeleteButtonClicked"/>
+                <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView"
+ Margin="20">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Detail="{Binding Description}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
